@@ -1,0 +1,336 @@
+Of course. Here is the `destination-ooty.html` file, created in the same enhanced and immersive format. All content, imagery, and color schemes have been updated to capture the serene, picturesque charm of Ooty, the "Queen of Hill Stations."
+
+### 🌲 `destination-ooty.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ooty - Queen of Hill Stations | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main style.css -->
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Destination-Specific Styles for Ooty */
+        body {
+            background: url('https://www.clubmahindra.com/blog/media/section_images/ultimate-o-8ac88a2da056a3d.jpg') center/cover no-repeat fixed !important;
+            color: #2c3e50; /* Dark Slate Blue for text */
+        }
+
+        /* --- OOTY HERO SECTION --- */
+        .ooty-hero {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .hero-background-ooty {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%;
+            background: linear-gradient(0deg, rgba(10, 20, 10, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.7) 100%), 
+                        url('https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ63jp5Ew1FUrelowP5lWB-AkhaGhYyOBEffoi-yssNTB0N75okcYok4ARNZ0o0eK8nMbyf94AsqiVzlWUYXdJoVl2u6mnRAMF_tZx-FH4') center/cover no-repeat;
+            background-attachment: scroll;
+            z-index: 1;
+        }
+
+        .ooty-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 950px;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.8);
+            transform: translateY(0px);
+        }
+
+        .ooty-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: #A8E6CF; /* Light Mint Green */
+            text-shadow: 0 0 25px rgba(168, 230, 207, 0.8), 0 0 40px rgba(60, 179, 113, 0.7);
+            animation: fadeInScale 1s ease-out;
+            font-weight: 700;
+        }
+
+        .ooty-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: #e0e6eb;
+            margin-bottom: 1.8rem;
+            text-shadow: 0 2px 15px #1c1c1c;
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #3CB371, #2E8B57); /* Medium Sea Green to Sea Green */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 30px rgba(60, 179, 113, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(46, 139, 87, 0.6);
+            background: linear-gradient(135deg, #2E8B57, #3CB371);
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .content-section {
+            padding: 5rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #f4f9f4; /* Very light green/white */
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #2E8B57; /* Sea Green */
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            color: #1E90FF; /* Dodger Blue for a cool highlight */
+            font-weight: 600;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-ooty {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-ooty .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .gallery-ooty img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease-out, filter 0.5s ease-out;
+            border-radius: 1.5rem;
+        }
+
+        .gallery-ooty .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .gallery-ooty .gallery-caption {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 1.2rem;
+            background: linear-gradient(transparent, rgba(10, 20, 10, 0.9));
+            color: #fff;
+            text-align: center;
+            transition: bottom 0.4s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-ooty .gallery-item:hover .gallery-caption {
+            bottom: 0;
+        }
+
+        /* --- LIST STYLES --- */
+        .feature-list, .tips-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
+            font-family: 'Poppins', sans-serif;
+        }
+        .feature-list li, .tips-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .feature-list li::before, .tips-list li::before {
+            content: '🍃';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.2em;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .ooty-title { font-size: 3.5rem; }
+            .ooty-subtitle { font-size: 1.5rem; }
+            h3 { font-size: 2.2rem; }
+            .content-section { padding: 3rem 5%; }
+            .gallery-ooty { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <!-- Your standard header HTML -->
+        <a href="index.html" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations" class="active">Destinations</a></li>
+                <li><a href="index.html#contact">Plan Your Trip</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu"><span></span><span></span><span></span></button>
+    </header>
+    <main style="margin-top: 0;">
+        <!-- OOTY HERO SECTION -->
+        <section class="ooty-hero">
+            <div class="hero-background-ooty"></div>
+            <div class="ooty-hero-content">
+                <h1 class="ooty-title">Ooty</h1>
+                <h2 class="ooty-subtitle">The Queen of Hill Stations | A Nilgiri Gem</h2>
+                <p class="hero-description">
+                    Nestled in the Nilgiri Hills, <span class="highlight">Ooty</span> is a verdant paradise of rolling tea plantations, serene lakes, and colonial charm. Breathe in the fresh mountain air and explore the breathtaking landscapes of this iconic South Indian hill station.
+                </p>
+                <a href="#plan-your-trip" class="book-now-btn">Discover Ooty's Beauty</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Best Tourist Places in Ooty</h3>
+            <ul class="feature-list">
+                <li><strong>Ooty Lake:</strong> Enjoy a peaceful boat ride or a stroll around this picturesque man-made lake.</li>
+                <li><strong>Botanical Gardens:</strong> Explore a vast collection of exotic plants, flowers, and the famous fossilized tree trunk.</li>
+                <li><strong>Doddabetta Peak:</strong> The highest point in the Nilgiris, offering stunning panoramic views of the surrounding hills.</li>
+                <li><strong>Tea Museum & Factory:</strong> Learn about the process of tea making and sample fresh Nilgiri tea.</li>
+                <li><strong>Nilgiri Mountain Railway:</strong> Take a ride on the UNESCO World Heritage toy train for a nostalgic and scenic journey.</li>
+                <li><strong>Pykara Lake & Waterfalls:</strong> A serene spot perfect for boating and admiring the cascading waterfalls.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h3>Ooty Photo Gallery</h3>
+            <div class="gallery-ooty">
+                <div class="gallery-item">
+                    <img src="https://img.etimg.com/thumb/msid-99375455,width-640,height-480,imgsize-2597810,resizemode-4/steepest-mountain-railway.jpg" alt="Nilgiri Mountain Railway">
+                    <div class="gallery-caption">Nilgiri Mountain Railway</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/11/3b/9d/57/munnar-tea-estates.jpg" alt="Ooty Tea Plantations">
+                    <div class="gallery-caption">Lush Tea Gardens</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/1f/37/8b/ooty-lake.jpg" alt="Ooty Lake">
+                    <div class="gallery-caption">Serene Ooty Lake</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/3d/3d/ce/doddabetta-peak.jpg?w=1200&h=-1&s=1" alt="View from Doddabetta Peak">
+                    <div class="gallery-caption">Doddabetta Peak View</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Botanical_Garden_ooty.jpg/2560px-Botanical_Garden_ooty.jpg" alt="Ooty Botanical Gardens">
+                    <div class="gallery-caption">Botanical Gardens</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://content.jdmagicbox.com/comp/ooty/t7/9999px423.x423.141218143035.v5t7/catalogue/pykara-lake-ooty-ho-ooty-tourist-attraction-qu9dl9p.jpg" alt="Pykara Lake Boathouse">
+                    <div class="gallery-caption">Pykara Lake</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-your-trip" class="content-section">
+            <h3>Travel Tips for Exploring Ooty</h3>
+            <ul class="tips-list">
+                <li>The best time to visit is from <span class="highlight">October to June</span>, offering pleasant days and cool nights.</li>
+                <li>Pack layers of clothing, including sweaters and a light jacket, as the weather can change quickly.</li>
+                <li>Don't miss trying the local <span class="highlight">homemade chocolates</span> and fresh bakery items.</li>
+                <li>Book your Nilgiri Mountain Railway tickets well in advance, especially during peak season, as they sell out fast.</li>
+                <li>Carry cash, as digital payments may not be available in more remote areas or smaller shops.</li>
+                <li>Explore the scenic drives to Coonoor and Kotagiri for more stunning tea garden views.</li>
+            </ul>
+        </section>
+
+        <section class="content-section contact-cta">
+            <h3 style="color: #2E8B57;">Ready to Escape to the Hills of Ooty?</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50;">Let us design your perfect retreat to the Queen of Hill Stations, filled with scenic beauty and tranquility.</p>
+            <a href="index.html#contact" class="book-now-btn">Plan Your Ooty Getaway</a>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Wanderlust. All rights reserved.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax effects
+        gsap.to(".hero-background-ooty", { yPercent: -20, ease: "none", scrollTrigger: { trigger: ".ooty-hero", start: "top top", end: "bottom top", scrub: true }});
+        gsap.to(".ooty-hero-content", { y: 50, ease: "none", scrollTrigger: { trigger: ".ooty-hero", start: "top top", end: "bottom top", scrub: true }});
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('load', () => {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled-dark', window.scrollY > 50);
+            });
+        });
+    </script>
+</body>
+</html>
+```

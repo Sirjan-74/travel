@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mumbai - City of Dreams | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main style.css -->
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Destination-Specific Styles for Mumbai */
+        body {
+            background: url(https://c.ndtvimg.com/2025-02/ou6t095g_mumbai_625x300_21_February_25.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=738) center/cover no-repeat fixed !important; 
+            color: #283c30; 
+        }
+
+        /* --- MUMBAI HERO SECTION --- */
+        .mumbai-hero {
+            position: relative;
+            width: 100%;
+            height: 550px; /* Taller hero for more impact */
+            overflow: hidden; /* For parallax background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .hero-background-mumbai {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%; /* Taller for more pronounced parallax */
+            background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 100%), 
+                        url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq24khDduUvxVgy7HjrLW50o6-cljeBEZLvQnD6DoKXIOs6uphCWZWnY7LWaBUyhVYNyQLW6iYbUSEtqA-G9z7GNJFNWWqx4PXXnmv4w8ons58lf2rzu6Sp3BEvSlYD9XTUcNrHrQ=w743-h429-n-k-no') center/cover no-repeat;
+            background-attachment: scroll; /* GSAP will handle parallax, no need for fixed */
+            z-index: 1;
+            transform: translateY(0%);
+            transition: transform 0.1s ease-out;
+        }
+
+        .mumbai-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            padding-top: calc(2rem + var(--header-height)); 
+            max-width: 900px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            transform: translateY(0px); /* For JS parallax */
+            transition: transform 0.1s ease-out;
+        }
+
+        .mumbai-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.8rem;m
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
+            color: #d11f0f; /* Vibrant red for Mumbai's energy */
+            text-shadow: 0 0 20px #e0e0e0, 0 0 35px rgba(255,111,97,0.7);
+            animation: fadeInScale 1s ease-out;
+            font-weight: 700;
+        }
+
+        .mumbai-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #e0e6eb; /* Softer white for subtitle */
+            margin-bottom: 1.8rem;
+            text-shadow: 0 2px 12px #332f29;
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #42a5f5, #ff6f61); /* Blue & Red gradient for Mumbai */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 30px rgba(66, 165, 245, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(66, 165, 245, 0.6);
+            background: linear-gradient(135deg, #ff6f61, #42a5f5); /* Reverse gradient on hover */
+        }
+
+        .book-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-30deg);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .book-now-btn:hover::before {
+            left: 100%;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .content-section {
+            padding: 5rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fcf8f3; /* Light background for content sections */
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #ff6f61; /* Vibrant red for titles */
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px rgba(255,111,97,0.3);
+            font-weight: 700;
+        }
+
+        
+
+        .highlight {
+            color: #42a5f5; /* Blue highlight */
+            font-weight: 700;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-mumbai { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-mumbai .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 3px 10px rgba(255,111,97,0.2);
+        }
+
+        .gallery-mumbai img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease-out, filter 0.5s ease-out;
+            border-radius: 1.5rem;
+        }
+
+        .gallery-mumbai .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.6);
+        }
+
+        .gallery-mumbai .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-mumbai .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+
+        /* --- Animations --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .mumbai-title { font-size: 3.2rem; letter-spacing: 2px; }
+            .mumbai-subtitle { font-size: 1.6rem; }
+            .hero-description { font-size: 1.05rem; }
+            .book-now-btn { padding: 14px 30px; font-size: 1rem; margin-top: 2rem; }
+            h3 { font-size: 2rem; margin-bottom: 2rem; }
+            .content-section { padding: 3rem 5%; }
+            .feature-list, .tips-list { margin: 1.5rem auto; font-size: 1rem; }
+            .feature-list li, .tips-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+            .feature-list li::before, .tips-list li::before { font-size: 1.1em; }
+            .gallery-mumbai { grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+            .gallery-mumbai img { height: 200px; }
+            .feature-card { padding: 2rem 1.5rem; }
+            .feature-card h4 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <a href="index.html" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations" class="active">Destinations</a></li>
+                <li><a href="index.html#contact">Plan Your Trip</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main style="margin-top: 0;">
+        <!-- MUMBAI HERO SECTION -->
+        <section class="mumbai-hero">
+            <div class="hero-background-mumbai" data-speed="-0.1"></div>
+            <div class="mumbai-hero-content" data-speed="0.2">
+                <h1 class="mumbai-title">Mumbai</h1>
+                <h2 class="mumbai-subtitle">City of Dreams | Where Bollywood Meets the Sea</h2>
+                <p class="hero-description">
+                    <span class="highlight">Mumbai</span> is India's bustling financial capital, home to Bollywood, historic landmarks, and vibrant street life. From colonial architecture to sandy beaches and endless energy, Mumbai captivates every visitor.
+                </p>
+                <a href="#plan-your-trip" class="book-now-btn">Discover Mumbai Tours</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Best Tourist Places in Mumbai</h3>
+            <ul class="feature-list">
+                <li><strong>Gateway of India:</strong> Iconic arch monument overlooking the Arabian Sea, a symbol of Mumbai's colonial history.</li>
+                <li><strong>Marine Drive:</strong> Scenic promenade known as the Queen's Necklace, perfect for evening strolls.</li>
+                <li><strong>Elephanta Caves:</strong> UNESCO World Heritage Site with ancient rock-cut temples dedicated to Lord Shiva.</li>
+                <li><strong>Chhatrapati Shivaji Maharaj Terminus:</strong> Gothic Victorian railway station, another UNESCO site.</li>
+                <li><strong>Juhu Beach:</strong> Popular beach with street food stalls, celebrity homes, and sunset views.</li>
+                <li><strong>Haji Ali Dargah:</strong> Stunning mosque on an islet, accessible via a causeway during low tide.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h3>Mumbai Photo Gallery</h3>
+            <div class="gallery-mumbai">
+                <div class="gallery-item">
+                    <img src="https://cdn.britannica.com/40/124440-050-621B7C6F/Gateway-of-India-Mumbai-Harbour.jpg" alt="Gateway of India, Mumbai">
+                    <div class="gallery-caption">Iconic Gateway of India</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://assets.zeezest.com/blogs/PROD_marine%20drive%20_1693625898430_thumb_1200.jpeg" alt="Marine Drive, Mumbai">
+                    <div class="gallery-caption">Scenic Marine Drive</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s7ap1.scene7.com/is/image/incredibleindia/1-elephanta-caves-mumbai-maharashtra-attr-hero?qlt=82&ts=1742184509331" alt="Elephanta Caves, Mumbai">
+                    <div class="gallery-caption">Ancient Elephanta Caves</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Chhatrapati_shivaji_terminus%2C_esterno_01.jpg/1200px-Chhatrapati_shivaji_terminus%2C_esterno_01.jpg" alt="Chhatrapati Shivaji Terminus, Mumbai">
+                    <div class="gallery-caption">Grand CST Station</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s7ap1.scene7.com/is/image/incredibleindia/juhu-beach-mumbai-maharashtra-2-musthead-hero?qlt=82&ts=1742167931841" alt="Juhu Beach, Mumbai">
+                    <div class="gallery-caption">Vibrant Juhu Beach</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Mumbai_03-2016_12_Haji_Ali_Dargah.jpg" alt="Haji Ali Dargah, Mumbai">
+                    <div class="gallery-caption">Majestic Haji Ali Dargah</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-your-trip" class="content-section">
+            <h3>Travel Tips for Exploring Mumbai</h3>
+            <ul class="tips-list">
+                <li>Best time to visit: <span class="highlight">November to February</span> for cooler weather, avoiding monsoon rains.</li>
+                <li>Must-try local street food includes <span class="highlight">vada pav, pav bhaji, and bhel puri</span> – explore Chowpatty Beach for the best experience.</li>
+                <li>Utilize the efficient <span class="highlight">local trains and Mumbai Metro</span> for convenient travel, but avoid peak hours if possible.</li>
+                <li>Respect local customs at religious sites: remove shoes, dress modestly, and be mindful of photography restrictions.</li>
+                <li>Stay hydrated, carry sunscreen, and be prepared for humidity when exploring outdoor attractions.</li>
+                <li>Bargain wisely when shopping in markets like Colaba Causeway or Crawford Market.</li>
+            </ul>
+        </section>
+
+        <!-- Dynamic Contact Section -->
+        <section class="content-section contact-cta">
+            <h3 class="glow-text" style="color: #ff6f61;">Ready to Explore the Vibrant Energy of Mumbai?</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #332f29;">Our experts will craft the perfect Mumbai itinerary tailored to your adventure.</p>
+            <a href="index.html#contact" class="book-now-btn">Plan Your Mumbai Journey</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Wanderlust. All rights reserved.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple parallax for the hero background
+        gsap.to(".hero-background-mumbai", { 
+            yPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".mumbai-hero", 
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Optional: Parallax for the hero content (moves down slightly slower)
+        gsap.to(".mumbai-hero-content", { 
+            y: 50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".mumbai-hero", 
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // NO SPARKLE JAVASCRIPT FUNCTIONS HERE
+
+        window.addEventListener('load', () => {
+            // Header background change on scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(0,0,0,0.8)';
+                } else {
+                    header.style.background = 'rgba(0,0,0,0.3)';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
