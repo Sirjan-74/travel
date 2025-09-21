@@ -1,35 +1,29 @@
 /* --- Global Styles & Variables --- */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&display=swap');
-
-/* Existing .sparkle and @keyframes twinkle from previous main.css */
-/* Add this for dynamic sparkles */
 .sparkle-particle {
-    animation: fadeOutFloat 2s forwards; /* Default animation */
+    animation: fadeOutFloat 2s forwards; 
 }
 
-/* Override for the fixed position of dynamically generated sparkles */
 #sparkle-container .sparkle-particle {
-    position: fixed; /* Ensures they float over everything */
-    animation: none; /* GSAP will handle animation */
+    position: fixed;
+    animation: none; 
 }
 
 #main-header {
-    position: fixed; /* Crucial for destination pages */
+    position: fixed; 
     top: 0;
     width: 100%;
-    /* ... existing styles ... */
-    background: rgba(0,0,0,0.3); /* Initial transparent background */
-    transition: background 0.3s ease; /* Smooth transition */
+    background: rgba(0,0,0,0.3);
+    transition: background 0.3s ease; 
 }
 
 main {
-    /* Remove margin-top: 80px; as header handles it */
-    margin-top: 0; /* Important */
+    margin-top: 0; 
 }
 
 :root {
-    --primary-color: #ff6b6b; /* A fresh, vibrant color */
-    --primary-dark: #e94f4f; /* Darker shade for 3D effect */
+    --primary-color: #ff6b6b; 
+    --primary-dark: #e94f4f;
     --secondary-color: #48cae4;
     --dark-color: #1a535c;
     --light-color: #f7fff7;
@@ -64,8 +58,6 @@ a {
     text-decoration: none;
     color: var(--primary-color);
 }
-
-/* --- Header & Navigation --- */
 #main-header {
     position: fixed;
     top: 0;
@@ -574,18 +566,18 @@ footer {
     position: relative;
     margin-bottom: 1.5rem;
     width: 100%;
-    max-width: 600px; /* Increased from 350px to match contact form */
+    max-width: 600px; 
     margin-left: auto;
     margin-right: auto;
 }
 
 .custom-input {
-    background-color: #eedcff; /* Changed to a lighter, more neutral color */
-    border: 2px solid #48cae4; /* Made border more visible */
+    background-color: #eedcff; 
+    border: 2px solid #48cae4;
     width: 100%;
-    min-height: 56px; /* Changed to min-height for textarea */
-    border-radius: 12px; /* Slightly more rounded */
-    color: #333; /* Darker text for better readability */
+    min-height: 56px; 
+    border-radius: 12px; 
+    color: #333;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
     box-shadow: 0 0 0 0px #48cae4, 0 2px 16px rgba(255, 107, 107, 0.2);
@@ -593,7 +585,7 @@ footer {
     outline: none;
     margin-bottom: 0;
     font-family: 'Poppins', sans-serif;
-    resize: vertical; /* Allow vertical resize for textarea */
+    resize: vertical; 
 }
 
 .custom-input:focus {
@@ -1016,4 +1008,5 @@ strong {
     .content-section p {
         font-size: 1rem;
     }
+
 }
