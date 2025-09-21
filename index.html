@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust India | Your Next Adventure Awaits</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <a href="#" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main>
+        <section id="hero">
+            <img src="https://github.com/bradtraversy/parallax-website/blob/master/img/2.png?raw=true" alt="Mid-ground mountains" class="parallax-layer" id="mid-mountain" data-speed="0.3">
+            <img src="https://github.com/bradtraversy/parallax-website/blob/master/img/1.png?raw=true" alt="Foreground trees" class="parallax-layer" id="fg-trees" data-speed="0.8">
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-center-content">
+                <div class="hero-unique-text">
+                    Embark on a Journey<br>
+                    <span class="hero-unique-highlight">Beyond Ordinary</span>
+                </div>
+                <a href="#destinations">
+                    <button class="adventure-btn">Start Adventure</button>
+                </a>
+            </div>
+        </section>
+        
+
+        <div class="dots-bg" id="dots-bg"></div>
+
+        <section class="content-section">
+            <h2>Discover Incredible India</h2>
+            <p>From the snow-capped Himalayas to the tropical beaches of the south, India's diversity is breathtaking. Let us guide you through its vibrant culture, ancient history, and stunning landscapes.</p>
+        </section>
+
+        <section id="destinations" class="content-section card-section">
+            <h2 class="section-title">Popular Destinations</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="leh.png" alt="Leh-Ladakh">
+                    <div class="card-content">
+                        <h3>Leh-Ladakh</h3>
+                        <p>Experience the surreal beauty of high-altitude deserts and serene monasteries.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="goa.png" alt="Beaches of Goa">
+                    <div class="card-content">
+                        <h3>Goa</h3>
+                        <p>Relax on sun-kissed beaches and enjoy the vibrant nightlife.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="jaipur.png" alt="Hawa Mahal, Jaipur">
+                    <div class="card-content">
+                        <h3>Jaipur</h3>
+                        <p>Explore majestic palaces and bustling markets in the 'Pink City'.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="kerela.png" alt="Kerala Backwaters">
+                    <div class="card-content">
+                        <h3>Kerala</h3>
+                        <p>Cruise the tranquil backwaters and enjoy lush green landscapes.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/03/0d/96/030d96b65ad4a70996c310799dcddadb.jpg" alt="Varanasi Ghats">
+                    <div class="card-content">
+                        <h3>Varanasi</h3>
+                        <p>Witness spiritual rituals on the ancient ghats of the Ganges.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="andaman.png" alt="Andaman Islands">
+                    <div class="card-content">
+                        <h3>Andaman Islands</h3>
+                        <p>Relax on pristine beaches and explore vibrant coral reefs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="news">
+        <h2>Latest Travel News</h2>
+        <div class="news-container">
+            <div class="news-item">
+                <h3>Nepal and Bhutan Citizens: No Passport or Visa Needed for India</h3>
+                <p><i>Starting September 1, 2025, citizens of Nepal and Bhutan can enter India without a passport or visa. This eases travel for our neighbors.</i></p>
+                <a href="https://timesofindia.indiatimes.com/life-style/travel/news/india-travel-update-nepal-and-bhutan-citizens-no-longer-require-to-carry-passport-or-visa-to-enter-india/articleshow/123694196.cms">Read more</a>
+            </div>
+            <div class="news-item">
+                <h3>Best Places to Visit in India in September 2025</h3>
+                <p><i>Explore Tarkarli, Dalhousie, Kollam, Daman, Manali, Coorg, and Darjeeling this month for romantic getaways and pleasant weather.</i></p>
+                <a href="https://www.travelandleisureasia.com/sea/destinations/india/places-to-visit-in-india-in-september-2025/">Read more</a>
+            </div>
+            <div class="news-item">
+                <h3>US Travel Advisory for India</h3>
+                <p><i>Exercise increased caution due to crime and terrorism. Check specific areas for risks.</i></p>
+                <a href="https://travel.state.gov/en/international-travel/travel-advisories/india.html">Read more</a>
+            </div>
+        </div>
+    </section>
+        
+        <section id="contact" class="content-section">
+            <h2 class="section-title">Plan Your Trip</h2>
+            <form id="contact-form"
+                  class="contact-form"
+                  action="https://formsubmit.co/sirjannishad74@gmail.com"
+                  method="POST">
+                <input type="hidden" name="_subject" value="New Travel Inquiry!">
+                <input type="hidden" name="_next" value="http://127.0.0.1:5500/thankyou.html">
+                <input type="hidden" name="_captcha" value="false">
+
+                <!-- Name Input -->
+                <div class="custom-input-container">
+                    <input placeholder="Your Name" type="text" name="name" class="custom-input" required />
+                </div>
+                <!-- Email Input -->
+                <div class="custom-input-container">
+                    <input placeholder="Your Email" type="email" name="email" class="custom-input" required />
+                </div>
+                <!-- Destination Input -->
+                <div class="custom-input-container">
+                    <input placeholder="Dream Destination" type="text" name="destination" class="custom-input" required />
+                </div>
+                <!-- Message Input -->
+                <div class="custom-input-container">
+                    <textarea placeholder="Tell us about your dream trip..." name="message" class="custom-input" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="margin: 2rem auto 0 auto; display: flex;">
+                  <strong>START YOUR JOURNEY</strong>
+                  <div id="container-stars">
+                    <div id="stars"></div>
+                  </div>
+                  <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                  </div>
+                </button>
+            </form>
+        </section>
+
+        <!-- Parallax Scrolling Background Image -->
+        <div class="parallax-bg-image"></div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sirjan Nishad. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
