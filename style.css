@@ -1,0 +1,1019 @@
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&display=swap');
+
+/* Existing .sparkle and @keyframes twinkle from previous main.css */
+/* Add this for dynamic sparkles */
+.sparkle-particle {
+    animation: fadeOutFloat 2s forwards; /* Default animation */
+}
+
+/* Override for the fixed position of dynamically generated sparkles */
+#sparkle-container .sparkle-particle {
+    position: fixed; /* Ensures they float over everything */
+    animation: none; /* GSAP will handle animation */
+}
+
+#main-header {
+    position: fixed; /* Crucial for destination pages */
+    top: 0;
+    width: 100%;
+    /* ... existing styles ... */
+    background: rgba(0,0,0,0.3); /* Initial transparent background */
+    transition: background 0.3s ease; /* Smooth transition */
+}
+
+main {
+    /* Remove margin-top: 80px; as header handles it */
+    margin-top: 0; /* Important */
+}
+
+:root {
+    --primary-color: #ff6b6b; /* A fresh, vibrant color */
+    --primary-dark: #e94f4f; /* Darker shade for 3D effect */
+    --secondary-color: #48cae4;
+    --dark-color: #1a535c;
+    --light-color: #f7fff7;
+    --text-color: #333;
+    --bg-color: #ffffff;
+    --header-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* --- Header & Navigation --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: var(--header-height);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
+}
+
+#main-header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 2rem;
+}
+
+.main-nav a {
+    font-weight: 600;
+    color: var(--dark-color);
+    position: relative;
+    padding: 5px 0;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* --- Hero & Parallax Section --- */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Crucial for parallax */
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.parallax-bg-image {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://cdn-ijnhp.nitrocdn.com/pywIAllcUPgoWDXtkiXtBgvTOSromKIg/assets/images/optimized/rev-5794eaa/www.jaypeehotels.com/blog/wp-content/uploads/2024/09/Blog-3-scaled.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -2;
+    will-change: transform;
+    transition: filter 0.3s;
+    filter: brightness(0.85) blur(0px);
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Use contain for layers */
+    object-position: bottom;
+}
+
+#mid-mountain { z-index: 1; }
+#fg-trees { z-index: 3; }
+
+/* Parallax 3D Image Styles */
+.parallax-img {
+    will-change: transform;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 60px #48cae4;
+    border-radius: 24px;
+}
+
+.parallax-caption {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 40px #48cae4, 0 0 80px #ff6b6b;
+}
+
+/* --- Content Sections --- */
+.content-section {
+    padding: 60px 10%;
+    max-width: 1100px;
+    margin: auto;
+    background: var(--bg-color);
+    position: relative; /* Needed to appear above hero */
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+.content-section li strong {
+    color: #ff6b6b;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* --- Card Layout for Destinations --- */
+.card-section .section-title {
+    margin-bottom: 3rem;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.08),
+        0 0 20px 0 rgba(72, 202, 228, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateY(-3deg);
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.12),
+        0 0 40px 0 var(--secondary-color);
+    z-index: 2;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+/* --- News Section --- */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem; /* Slightly increased gap for floating cards */
+    justify-content: center;
+    perspective: 1500px; /* Adds a 3D perspective to the container */
+    margin-top: 3rem; /* Added margin */
+    margin-bottom: 5rem; /* Added margin */
+    padding: 0 5%; /* Inner padding for responsiveness */
+}
+
+.news-item {
+    background: #e9f5cc; 
+    border-radius: 18px; /* More rounded corners */
+    padding: 2rem; 
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15), /* Standard subtle shadow for depth */
+        0 0 15px rgba(107, 54, 145, 0.2); /* Subtle purple glow */
+    flex: 1 1 300px;
+    max-width: 400px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother, more dynamic transition */
+    transform-style: preserve-3d; /* Enables 3D transforms on child elements (or itself) */
+    position: relative; /* Needed for z-index on hover */
+    border: 1px solid rgba(107, 54, 145, 0.1); /* Subtle border for definition */
+}
+
+.news-item:hover {
+    transform: translateY(-12px) rotateX(3deg) rotateY(3deg) scale(1.03); /* Lift, subtle 3D tilt, and slight scale */
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.25), /* Stronger shadow when lifted */
+        0 0 30px rgba(255, 153, 51, 0.6); /* More prominent orange glow on hover */
+    border-color: #ff9933; /* Border color changes to orange */
+    z-index: 10; /* Ensures hovered card is on top of neighbors */
+}
+
+.news-item h3 {
+    font-size: 1.5rem; /* Slightly larger heading */
+    color: #22628a; /* Purple text */
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(107, 54, 145, 0.3); /* Subtle text glow */
+    transition: all 0.3s ease;
+}
+
+.news-item:hover h3 {
+    color: #ff9933; /* Change to orange on hover */
+    text-shadow: 0 0 12px rgba(255, 153, 51, 0.8); /* More pronounced orange text glow */
+}
+
+.news-item p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem; /* More space below paragraph */
+    color: #4a4a4a; /* Darker gray for readability */
+    line-height: 1.6;
+}
+
+.news-item a {
+    color: #ff9933;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative; 
+    display: inline-block; 
+    padding-bottom: 3px; 
+    overflow: hidden; 
+    transition: color 0.3s ease;
+}
+
+.news-item a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0; /* Position the underline precisely */
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background: linear-gradient(90deg, #ff9933 0%, #6b3691 100%); /* Gradient for a shiny/dynamic underline */
+    transform: translateX(-100%); /* Starts off-screen to the left */
+    transition: transform 0.4s ease-out; /* Animation for the underline */
+}
+
+.news-item a:hover {
+    color: #6b3691; /* Change link text to purple on hover */
+}
+
+.news-item a:hover::after {
+    transform: translateX(0);
+}
+
+/* --- Contact Form & 3D Button (UPDATED) --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #f6baba;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.btn-3d {
+    position: relative;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, filter 0.2s;
+    box-shadow: 0 4px 0 var(--primary-dark), 0 0 16px 0 var(--primary-color);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+.btn-3d:hover {
+    background: #ff7f7f;
+    filter: drop-shadow(0 0 20px var(--primary-color));
+}
+
+.btn-3d:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow: 0 1px 0 var(--primary-dark);
+}
+
+/* --- Start Adventure Button (FIXED) --- */
+.start-adventure-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 10vh;
+    transform: translateX(-50%);
+    padding: 1.2rem 3.2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffcdcd;
+    background: linear-gradient(90deg, #ff6b6b 0%, #48cae4 100%);
+    border: none;
+    border-radius: 40px;
+    box-shadow:
+        0 0 24px #f86666,
+        0 0 48px #48cae4,
+        0 8px 32px 0 rgba(72,202,228,0.25);
+    filter: drop-shadow(0 0 18px #ff6b6b);
+    cursor: pointer;
+    text-shadow: 0 2px 8px #1a535c;
+    letter-spacing: 2px;
+    transition: 
+        background 0.3s,
+        transform 0.15s,
+        box-shadow 0.3s,
+        filter 0.3s;
+    z-index: 10;
+    overflow: hidden;
+    animation: letsgo-glow 2.5s infinite alternate, letsgo-float 3s ease-in-out infinite;
+}
+
+@keyframes letsgo-glow {
+    0% { box-shadow: 0 0 24px #ff6b6b, 0 0 48px #48cae4; }
+    100% { box-shadow: 0 0 48px #ff6b6b, 0 0 80px #48cae4; }
+}
+
+@keyframes letsgo-float {
+    0%, 100% { bottom: 10vh; }
+    50% { bottom: 12vh; }
+}
+
+/* --- Hero Center Content --- */
+.hero-center-content {
+    position: absolute;
+    left: 50%;
+    bottom: 10vh;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-main-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 18px #48cae4, 0 0 32px #ff6b6b;
+}
+
+.hero-sub-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 0.5rem;
+    margin-bottom: 2.2rem;
+    text-shadow: 0 0 10px #1a535c;
+}
+
+/* --- Unique Hero Text Styles (FIXED) --- */
+.hero-unique-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 5.3rem;
+    color: #ffffff; /* Changed to white for better visibility */
+    text-shadow: 0 4px 32px #85cd39, 0 0 12px #81be79, 0 2px 8px rgba(0,0,0,0.5); /* Added dark shadow for depth */
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-unique-highlight {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.7rem;
+    color: #ffffff; /* Changed to white for better visibility */
+    letter-spacing: 2px;
+    text-shadow: 0 2px 16px #48cae4, 0 0 8px #ad031f, 0 2px 8px rgba(0,0,0,0.5); /* Enhanced shadows */
+    display: block;
+    margin-top: 0.3rem;
+    animation: highlightPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 4px 32px #85cd39, 0 0 12px #81be79, 0 2px 8px rgba(0,0,0,0.5);
+    }
+    100% {
+        text-shadow: 0 4px 32px #85cd39, 0 0 25px #81be79, 0 2px 8px rgba(0,0,0,0.5);
+    }
+}
+
+@keyframes highlightPulse {
+    0% {
+        text-shadow: 0 2px 16px #48cae4, 0 0 8px #ad031f, 0 2px 8px rgba(0,0,0,0.5);
+    }
+    100% {
+        text-shadow: 0 2px 20px #48cae4, 0 0 20px #ad031f, 0 2px 8px rgba(0,0,0,0.5);
+    }
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--dark-color);
+    color: #fff;
+}
+
+/* --- Animated Dots Background --- */
+.dots-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    background: radial-gradient(circle, var(--secondary-color) 0%, var(--primary-color) 100%);
+    animation: move-dot 12s linear infinite;
+}
+
+@keyframes move-dot {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+        filter: blur(2px);
+    }
+    100% {
+        transform: translateY(100vh) scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+/* --- Add glow to filter buttons --- */
+.filter-btn {
+    background: var(--light-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem 1.5rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 8px 0 var(--primary-color);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 0 16px 0 var(--primary-color), 0 0 32px 0 var(--secondary-color);
+}
+
+/* --- Custom Input Styles (FIXED) --- */
+.custom-input-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 600px; /* Increased from 350px to match contact form */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-input {
+    background-color: #eedcff; /* Changed to a lighter, more neutral color */
+    border: 2px solid #48cae4; /* Made border more visible */
+    width: 100%;
+    min-height: 56px; /* Changed to min-height for textarea */
+    border-radius: 12px; /* Slightly more rounded */
+    color: #333; /* Darker text for better readability */
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 0 0 0px #48cae4, 0 2px 16px rgba(255, 107, 107, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical; /* Allow vertical resize for textarea */
+}
+
+.custom-input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3), 0 2px 24px rgba(72, 202, 228, 0.3);
+    background: #cff3ff;
+    border-color: #ff6b6b;
+    transform: scale(1.02);
+}
+
+.custom-input::placeholder {
+    color: #666; /* Better contrast for placeholder */
+    opacity: 1;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Specific styles for textarea */
+.custom-input[rows] {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* --- Stylish Animated Start Adventure Button (FIXED) --- */
+.adventure-btn {
+    --border-radius: 15px;
+    --border-width: 4px;
+    appearance: none;
+    position: relative;
+    padding: 1em 2em;
+    border: 0;
+    background-color: #212121;
+    font-family: "Poppins", Arial, "Segoe UI", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    z-index: 2;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 2rem;
+}
+
+.adventure-btn::after {
+    --m-i: linear-gradient(#000, #000);
+    --m-o: content-box, padding-box;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--border-width);
+    border-radius: var(--border-radius);
+    background-image: conic-gradient(
+        #488cfb,
+        #29dbbc,
+        #ddf505,
+        #ff9f0e,
+        #e440bb,
+        #655adc,
+        #488cfb
+    );
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-origin: var(--m-o);
+    mask-origin: var(--m-o);
+    -webkit-mask-clip: var(--m-o);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    filter: hue-rotate(0);
+    animation: rotate-hue linear 500ms infinite;
+    animation-play-state: paused;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.adventure-btn:hover::after {
+    animation-play-state: running;
+}
+
+.adventure-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+@keyframes rotate-hue {
+    to {
+        filter: hue-rotate(1turn);
+    }
+}
+
+.adventure-btn,
+.adventure-btn::after {
+    box-sizing: border-box;
+}
+
+.adventure-btn:active {
+    --border-width: 5px;
+    transform: scale(0.98);
+}
+
+/* --- Animated Gradient Button with Stars (FIXED) --- */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem;
+    overflow: hidden;
+    height: 3.5rem;
+    background-size: 300% 300%;
+    cursor: pointer;
+    backdrop-filter: blur(1rem);
+    border-radius: 5rem;
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border: double 4px transparent;
+    background-image: linear-gradient(#212121, #212121),
+        linear-gradient(
+            137.48deg,
+            #ffdb3b 10%,
+            #fe53bb 45%,
+            #8f51ea 67%,
+            #0044ff 87%
+        );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    margin: 2rem auto 0 auto;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+#container-stars {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(1rem);
+    border-radius: 5rem;
+}
+
+strong {
+    z-index: 2;
+    font-family: "Montserrat", Arial, "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 0 4px white;
+}
+
+#glow {
+    position: absolute;
+    display: flex;
+    width: 12rem;
+}
+
+.circle {
+    width: 100%;
+    height: 30px;
+    filter: blur(2rem);
+    animation: pulse_3011 4s infinite;
+    z-index: -1;
+}
+
+.circle:nth-of-type(1) {
+    background: rgba(254, 83, 186, 0.636);
+}
+
+.circle:nth-of-type(2) {
+    background: rgba(142, 81, 234, 0.704);
+}
+
+.btn:hover #container-stars {
+    z-index: 1;
+    background-color: #212121;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn:active {
+    border: double 4px #fe53bb;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    animation: none;
+}
+
+.btn:active .circle {
+    background: #fe53bb;
+}
+
+#stars {
+    position: relative;
+    background: transparent;
+    width: 200rem;
+    height: 200rem;
+}
+
+#stars::after {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: -100rem;
+    width: 100%;
+    height: 100%;
+    animation: animStarRotate 90s linear infinite;
+}
+
+#stars::after {
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 50px 50px;
+}
+
+#stars::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 170%;
+    height: 500%;
+    animation: animStar 60s linear infinite;
+}
+
+#stars::before {
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-135rem);
+    }
+}
+
+@keyframes animStarRotate {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes gradient_301 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulse_3011 {
+    0% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+/* --- Hero Overlay --- */
+.hero-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(120deg, rgba(26,83,92,0.45) 0%, rgba(72,202,228,0.18) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-title, .letsgo-btn { 
+    z-index: 2; 
+    position: relative; 
+}
+
+/* --- Responsive Design (Mobile First) --- */
+@media (max-width: 768px) {
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .main-nav.active {
+        transform: translateX(0);
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .main-nav ul li {
+        margin-left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        z-index: 1001;
+    }
+    
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--dark-color);
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Hero text responsive adjustments */
+    .hero-unique-text {
+        font-size: clamp(2.5rem, 8vw, 5.3rem);
+    }
+
+    .hero-unique-highlight {
+        font-size: clamp(1.5rem, 5vw, 2.7rem);
+    }
+
+    .adventure-btn {
+        font-size: 1rem;
+        padding: 0.8em 1.5em;
+    }
+
+    .btn {
+        width: 16rem;
+        height: 3rem;
+    }
+
+    .btn strong {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* Contact form responsive */
+    .custom-input-container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .custom-input {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    /* News section responsive */
+    .news-container {
+        gap: 1.5rem;
+        padding: 0 2%;
+    }
+    
+    .news-item {
+        flex: 1 1 100%; 
+        max-width: none;
+        padding: 1.5rem;
+    }
+    
+    .news-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .news-item p {
+        font-size: 0.9rem;
+    }
+
+    /* --- Responsive: Dots background hidden on mobile for performance --- */
+    .dots-bg {
+        display: none;
+    }
+
+    /* Content sections padding adjustment */
+    .content-section {
+        padding: 40px 5%;
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+    }
+
+    .content-section p {
+        font-size: 1rem;
+    }
+}
