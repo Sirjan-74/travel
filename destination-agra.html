@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agra - Home of the Taj Mahal | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main style.css -->
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Destination-Specific Styles for Agra: Majestic & Elegant Theme */
+        body {
+            background-image: url("https://backpackersunited.in/_next/image?url=https%3A%2F%2Fbpu-images-v1.s3.eu-north-1.amazonaws.com%2Fuploads%2F1722064409262_Taj-Mahal.jpg&w=3840&q=100"); 
+        }
+
+        /* --- HEADER OVERRIDE FOR LIGHT BACKGROUND ON THIS PAGE --- */
+        #main-header {
+            background: rgba(255, 255, 255, 0.85); /* Light, translucent header */
+            backdrop-filter: blur(10px); /* Soft blur */
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        #main-header.scrolled {
+            background: rgba(255, 255, 255, 0.95); /* Slightly less transparent when scrolled */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #main-header .logo {
+            color: #d4af37; /* Golden logo on light header */
+        }
+
+        #main-header .main-nav a {
+            color: #4a3c2c; /* Rich brown links on light header */
+        }
+
+        #main-header .main-nav a::after {
+            background: #cd5c5c; /* Soft red underline */
+        }
+
+        .hamburger span {
+            background: #4a3c2c; /* Darker hamburger lines for visibility */
+        }
+
+
+        /* --- AGRA HERO SECTION --- */
+        .agra-hero { /* Renamed class */
+            position: relative;
+            width: 100%;
+            height: 550px; /* Taller hero for majestic feel */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* Subtle shadow for the hero block */
+        }
+
+        .hero-background-agra { /* Renamed class */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%; /* Taller for more pronounced parallax */
+            background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Agra_03-2016_10_Agra_Fort.jpg') center/cover no-repeat; /
+            background-attachment: scroll; /* GSAP will handle parallax, no need for fixed */
+            z-index: 1;
+        }
+
+        .agra-hero-content { /* Renamed class */
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            padding-top: calc(2rem + var(--header-height)); 
+            max-width: 900px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            transform: translateY(0px); /* For JS parallax */
+            transition: transform 0.1s ease-out;
+        }
+
+        .agra-title { /* Renamed class */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
+            color: #d4af37; /* Golden color */
+            text-shadow: 0 0 25px #d4af37, 0 0 40px rgba(212,175,55,0.7);
+            animation: fadeInScale 1s ease-out;
+            font-weight: 700;
+        }
+
+        .agra-subtitle { /* Renamed class */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #e0e6eb; /* Softer white for subtitle */
+            margin-bottom: 1.8rem;
+            text-shadow: 0 2px 12px #332f29;
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #cd5c5c, #d4af37); /* Soft Red to Gold gradient */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 30px rgba(205, 92, 92, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(205, 92, 92, 0.6);
+            background: linear-gradient(135deg, #d4af37, #cd5c5c); /* Reverse gradient on hover */
+        }
+
+        .book-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-30deg);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .book-now-btn:hover::before {
+            left: 100%;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .content-section {
+            padding: 5rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fcf6e8; /* Creamy background for content sections */
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #cd5c5c; /* Soft red for headings */
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px rgba(205,92,92,0.2);
+            font-weight: 700;
+        }
+
+        .feature-list, .tips-list {
+            text-align: left;
+            max-width: 800px;
+            margin: 2.5rem auto;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #4a3c2c; /* Rich brown text for readability */
+        }
+
+        .feature-list li, .tips-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+
+        .feature-list li::before, .tips-list li::before {
+            content: '🏛️'; /* Column emoji bullet point */
+            position: absolute;
+            left: 0;
+            color: #d4af37; /* Golden bullet point */
+            font-size: 1.3em;
+        }
+
+        .highlight {
+            color: #d4af37; /* Golden highlight */
+            font-weight: 700;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-agra { /* Renamed class */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-agra .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 3px 10px rgba(205,92,92,0.2);
+        }
+
+        .gallery-agra img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease-out, filter 0.5s ease-out;
+            border-radius: 1.5rem;
+        }
+
+        .gallery-agra .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.6);
+        }
+
+        .gallery-agra .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-agra .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        /* --- Footer --- */
+        footer {
+            background: #4a3c2c; /* Dark brown footer for contrast */
+            color: #fcf6e8;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .agra-title { font-size: 3rem; letter-spacing: 2px; }
+            .agra-subtitle { font-size: 1.5rem; }
+            .hero-description { font-size: 1.05rem; }
+            .book-now-btn { padding: 14px 30px; font-size: 1rem; margin-top: 2rem; }
+            h3 { font-size: 2rem; margin-bottom: 2rem; }
+            .content-section { padding: 3rem 5%; }
+            .feature-list, .tips-list { margin: 1.5rem auto; font-size: 1rem; }
+            .feature-list li, .tips-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+            .feature-list li::before, .tips-list li::before { font-size: 1.1em; }
+            .gallery-agra { grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+            .gallery-agra img { height: 200px; }
+            .feature-card { padding: 2rem 1.5rem; }
+            .feature-card h4 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <a href="index.html" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations" class="active">Destinations</a></li>
+                <li><a href="index.html#contact">Plan Your Trip</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main style="margin-top: 0;">
+        <!-- AGRA HERO SECTION -->
+        <section class="agra-hero">
+            <div class="hero-background-agra" data-speed="-0.1"></div>
+            <div class="agra-hero-content" data-speed="0.2">
+                <h1 class="agra-title">Agra</h1>
+                <h2 class="agra-subtitle">Home of the Taj Mahal | A Monument to Love</h2>
+                <p class="hero-description">
+                    Step into the enchanting city of <span class="highlight">Agra</span>, renowned worldwide for the magnificent Taj Mahal, a UNESCO World Heritage site and an eternal symbol of love. Beyond its iconic monument, Agra boasts a rich Mughal history, vibrant culture, and delicious cuisine.
+                </p>
+                <a href="#plan-your-trip" class="book-now-btn">Discover Agra Tours</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Iconic Landmarks in Agra</h3>
+            <ul class="feature-list">
+                <li><strong>Taj Mahal:</strong> The breathtaking white marble mausoleum, a wonder of the world and a testament to eternal love.</li>
+                <li><strong>Agra Fort:</strong> A grand Mughal fortress, a UNESCO World Heritage site, and the imperial city of the Mughal rulers.</li>
+                <li><strong>Fatehpur Sikri:</strong> A well-preserved deserted Mughal city, an architectural masterpiece near Agra.</li>
+                <li><strong>Itmad-ud-Daula's Tomb (Baby Taj):</strong> A beautiful Mughal mausoleum, considered a draft for the Taj Mahal.</li>
+                <li><strong>Mehtab Bagh:</strong> A charbagh complex with stunning views of the Taj Mahal across the Yamuna River, especially at sunset.</li>
+                <li><strong>Akbar's Tomb, Sikandra:</strong> The impressive final resting place of the great Mughal Emperor Akbar.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h3>Agra Photo Gallery</h3>
+            <div class="gallery-agra">
+                <div class="gallery-item">
+                    <img src="https://t4.ftcdn.net/jpg/15/30/93/23/360_F_1530932380_OPBgH9ATl1J6ZICWoZZUJsJpRbW08jqm.jpg" alt="Taj Mahal at sunrise">
+                    <div class="gallery-caption">The Majestic Taj Mahal</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.andbeyond.com/wp-content/uploads/sites/5/Jahangiri-Mahal-Agra-Fort1.jpg" alt="Agra Fort exterior">
+                    <div class="gallery-caption">Grand Agra Fort</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.andbeyond.com/wp-content/uploads/sites/5/Fatehphur-Sikri-Agra-India.jpg" alt="Fatehpur Sikri gate">
+                    <div class="gallery-caption">Historic Fatehpur Sikri</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.trawell.in/admin/images/upload/763938309Agra_Itimad-ud-daulah_Main.jpg" alt="Itmad-ud-Daula's Tomb">
+                    <div class="gallery-caption">Elegant Baby Taj</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static.toiimg.com/img/72084423/Master.jpg" alt="Mehtab Bagh with Taj view">
+                    <div class="gallery-caption">Taj View from Mehtab Bagh</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Akbar%27s_Tomb_04.jpg/1200px-Akbar%27s_Tomb_04.jpg" alt="Akbar's Tomb entrance">
+                    <div class="gallery-caption">Akbar's Grand Tomb</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-your-trip" class="content-section">
+            <h3>Agra Travel Tips</h3>
+            <ul class="tips-list">
+                <li>Best time to visit: <span class="highlight">October to March</span> for pleasant weather.</li>
+                <li>Visit the <span class="highlight">Taj Mahal at sunrise</span> for fewer crowds and magical light.</li>
+                <li>Explore local markets for unique marble inlay work, leather goods, and handicrafts.</li>
+                <li>Be aware of touts and guides around major attractions; consider pre-booking official guides.</li>
+                <li>Try the famous <span class="highlight">Petha (sweet candy)</span> and Mughlai cuisine.</li>
+                <li>Wear comfortable shoes, as there's a lot of walking involved at historical sites.</li>
+            </ul>
+        </section>
+
+        <!-- Dynamic Contact Section -->
+        <section class="content-section contact-cta">
+            <h3 class="glow-text" style="color: #d4af37;">Ready to Witness Eternal Love in Agra?</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #4a3c2c;">Our experts will craft the perfect Agra itinerary tailored to your historical and romantic aspirations.</p>
+            <a href="index.html#contact" class="book-now-btn">Plan Your Agra Journey</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Wanderlust. All rights reserved.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple parallax for the hero background
+        gsap.to(".hero-background-agra", { /* Changed class */
+            yPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".agra-hero", /* Changed class */
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Optional: Parallax for the hero content (moves down slightly slower)
+        gsap.to(".agra-hero-content", { /* Changed class */
+            y: 50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".agra-hero", /* Changed class */
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // NO SPARKLE JAVASCRIPT FUNCTIONS HERE
+
+        window.addEventListener('load', () => {
+            // Header background change on scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                // For a light-themed page, the header should adjust accordingly
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(255,255,255,0.95)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.background = 'rgba(255,255,255,0.85)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+```

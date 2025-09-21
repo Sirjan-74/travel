@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goa - The Pearl of the Orient | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main style.css -->
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Destination-Specific Styles for Goa */
+        body {
+            background: url('https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS_oDgo2UzAP7aPZvc2BXsAWGOyK2eC3fLKmaDCtPlu1kQjZk9QXDBbFQ-4koPKYQfvX9e-lQxsS-SEg1m8EpRL2r4ZhyynmAvJCyb-KQ') center/cover no-repeat fixed !important;
+            color: #333; /* Darker text for better contrast */
+        }
+
+        /* --- GOA HERO SECTION --- */
+        .goa-hero {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .hero-background-goa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%;
+            background: linear-gradient(0deg, rgba(0, 50, 70, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.7) 100%), 
+                        url('https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSwrEjXheOVI_DUhZwkXdOAHvUMiXFupRYgy9gUN3d4_vvfUVc_MKR2-j8q1Z0UAiGaa0JE0sWlDgIpe3pwhrSE1_uqhkDakbRvddlxjw') center/cover no-repeat;
+            background-attachment: scroll;
+            z-index: 1;
+        }
+
+        .goa-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 950px;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.8);
+        }
+
+        .goa-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: #FFD700; /* Bright Gold */
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 165, 0, 0.7);
+            animation: fadeInScale 1s ease-out;
+            font-weight: 700;
+        }
+
+        .goa-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: #e0e6eb;
+            margin-bottom: 1.8rem;
+            text-shadow: 0 2px 15px #1c1c1c;
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #1E90FF, #00BFFF); /* Dodger Blue to Deep Sky Blue */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 30px rgba(30, 144, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 191, 255, 0.6);
+            background: linear-gradient(135deg, #00BFFF, #1E90FF);
+        }
+        
+        /* --- CONTENT SECTIONS --- */
+        .content-section {
+            padding: 5rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fdfaf5; /* Light sandy beige */
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #FF6347; /* Tomato Red for a vibrant touch */
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            color: #1E90FF; /* Dodger Blue to match the button */
+            font-weight: 600;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-goa {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-goa .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .gallery-goa img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease-out, filter 0.5s ease-out;
+            border-radius: 1.5rem;
+        }
+
+        .gallery-goa .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .gallery-goa .gallery-caption {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 1.2rem;
+            background: linear-gradient(transparent, rgba(10, 20, 30, 0.9));
+            color: #fff;
+            text-align: center;
+            transition: bottom 0.4s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-goa .gallery-item:hover .gallery-caption {
+            bottom: 0;
+        }
+
+        /* --- LIST STYLES --- */
+        .feature-list, .tips-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
+            font-family: 'Poppins', sans-serif;
+        }
+        .feature-list li, .tips-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .feature-list li::before, .tips-list li::before {
+            content: '☀️';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.2em;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .goa-title { font-size: 3.8rem; }
+            .goa-subtitle { font-size: 1.5rem; }
+            h3 { font-size: 2.2rem; }
+            .content-section { padding: 3rem 5%; }
+            .gallery-goa { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <!-- Your standard header HTML -->
+        <a href="index.html" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations" class="active">Destinations</a></li>
+                <li><a href="index.html#contact">Plan Your Trip</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu"><span></span><span></span><span></span></button>
+    </header>
+    <main style="margin-top: 0;">
+        <!-- GOA HERO SECTION -->
+        <section class="goa-hero">
+            <div class="hero-background-goa"></div>
+            <div class="goa-hero-content">
+                <h1 class="goa-title">Goa</h1>
+                <h2 class="goa-subtitle">The Pearl of the Orient | Sun, Sand, and Soul</h2>
+                <p class="hero-description">
+                    Welcome to <span class="highlight">Goa</span>, India's sun-kissed paradise. Discover a vibrant blend of golden beaches, colonial architecture, bustling markets, and a legendary nightlife that makes every moment unforgettable.
+                </p>
+                <a href="#plan-your-trip" class="book-now-btn">Discover Goa's Vibe</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Best Tourist Places in Goa</h3>
+            <ul class="feature-list">
+                <li><strong>Baga & Calangute Beaches:</strong> The epicenters of Goa's nightlife, water sports, and beach shack culture.</li>
+                <li><strong>Old Goa (Velha Goa):</strong> A UNESCO World Heritage site with magnificent Portuguese churches like the Basilica of Bom Jesus.</li>
+                <li><strong>Palolem Beach:</strong> A serene, crescent-shaped beach in South Goa, perfect for relaxing and kayaking.</li>
+                <li><strong>Dudhsagar Falls:</strong> A majestic four-tiered waterfall that translates to "Sea of Milk," offering a spectacular sight.</li>
+                <li><strong>Anjuna Flea Market:</strong> A vibrant weekly market famous for its eclectic mix of clothing, jewelry, and handicrafts.</li>
+                <li><strong>Fort Aguada:</strong> A 17th-century Portuguese fort offering stunning views of the Arabian Sea.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h3>Goa Photo Gallery</h3>
+            <div class="gallery-goa">
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/da/70/75/caption.jpg?w=900&h=500&s=1" alt="Palolem Beach, South Goa">
+                    <div class="gallery-caption">Serene Palolem Beach</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static.toiimg.com/photo/92691434.cms" alt="Basilica of Bom Jesus">
+                    <div class="gallery-caption">Basilica of Bom Jesus</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.abhibus.com/2024/06/How-to-Reach-Dudhsagar-Waterfalls.jpg" alt="Dudhsagar Falls">
+                    <div class="gallery-caption">Majestic Dudhsagar Falls</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.jdmagicbox.com/quickquotes/listicle/listicle_1707111107203_fjgxd_847x400.jpg" alt="Beach Shacks in Goa">
+                    <div class="gallery-caption">Vibrant Beach Shacks</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.fabhotels.com/blog/wp-content/uploads/2019/06/Aguada-Fort_600.jpg" alt="Fort Aguada">
+                    <div class="gallery-caption">Historic Fort Aguada</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80&w=700" alt="Anjuna Beach Sunset">
+                    <div class="gallery-caption">Anjuna Beach Sunset</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-your-trip" class="content-section">
+            <h3>Travel Tips for Exploring Goa</h3>
+            <ul class="tips-list">
+                <li>Best time to visit is from <span class="highlight">November to February</span> for perfect weather. The monsoon season (June-September) offers lush greenery and fewer crowds.</li>
+                <li>Rent a scooter or a car to explore freely. It's the most convenient way to get around.</li>
+                <li>Indulge in authentic Goan cuisine. Don't miss the seafood curries, vindaloo, and bebinca for dessert.</li>
+                <li>Choose your base wisely: North Goa for a party vibe, and South Goa for tranquility and relaxation.</li>
+                <li>Stay hydrated with coconut water and carry sunscreen, a hat, and sunglasses at all times.</li>
+                <li>Respect the local culture and dress modestly when visiting religious sites away from the beaches.</li>
+            </ul>
+        </section>
+
+        <section class="content-section contact-cta">
+            <h3 style="color: #FF6347;">Ready to Live the Goan Dream?</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #333;">Let us plan your ultimate beach holiday, filled with adventure, relaxation, and unforgettable moments.</p>
+            <a href="index.html#contact" class="book-now-btn">Plan Your Goa Escape</a>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Wanderlust. All rights reserved.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax effects for Goa page
+        gsap.to(".hero-background-goa", { yPercent: -20, ease: "none", scrollTrigger: { trigger: ".goa-hero", start: "top top", end: "bottom top", scrub: true }});
+        gsap.to(".goa-hero-content", { y: 50, ease: "none", scrollTrigger: { trigger: ".goa-hero", start: "top top", end: "bottom top", scrub: true }});
+
+        // Smooth scroll for internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('load', () => {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled-dark', window.scrollY > 50);
+            });
+        });
+    </script>
+</body>
+</html>

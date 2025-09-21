@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kedarnath - Abode of Lord Shiva | Wanderlust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main style.css -->
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Destination-Specific Styles for Kedarnath */
+        body {
+            background-image: url(https://i0.wp.com/weekendyaari.in/wp-content/uploads/2024/04/Kedarnath-Tour-Package-From-Hyderabad-at-15999-4N5D--scaled.jpg?fit=1600%2C1600&ssl=1); /* Very dark, solemn feel */
+            color: #072f4f; /* Light grayish-blue for text */
+        }
+
+        /* --- KEDARNATH HERO SECTION --- */
+        .kedarnath-hero {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Taller hero for majestic feel */
+            overflow: hidden; /* For parallax background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .hero-background-kedarnath {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%; /* Taller for more pronounced parallax */
+            background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%), 
+                        url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrdaiuiCIXQrVHgR2EqPGFd9DUoGjx_6OY16jtIZo12rUZ8usQOZDLrut7KuA4-uBl7GGwaDigcKNCwNgv_80aKkzP3R_pJW6A-Z5_zjoQ0MPK_lZmlBDAH2gWv9rKS6WVzxitTMQ=w743-h429-n-k-no') center/cover no-repeat; ;
+            background-attachment: scroll; /* GSAP will handle parallax, no need for fixed */
+            z-index: 1;
+            transform: translateY(0%);
+            transition: transform 0.1s ease-out;
+        }
+
+        .kedarnath-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            padding-top: calc(2rem + var(--header-height)); 
+            max-width: 900px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            transform: translateY(0px); /* For JS parallax */
+            transition: transform 0.1s ease-out;
+        }
+
+        .kedarnath-title {
+            font-family: 'Montserrat', sans-serif; /* Using Montserrat for a more solemn title */
+            font-size: 4.5rem; /* Larger title */
+            letter-spacing: 4px;
+            margin-bottom: 0.12rem;
+            color: #fce38a; /* Golden accent */
+            text-shadow: 0 0 25px #fce38a, 0 0 40px rgba(252,227,138,0.7);
+            animation: fadeInScale 1s ease-out;
+            font-weight: 700;
+        }
+
+        .kedarnath-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: #cfdee7; /* Softer white for subtitle */
+            margin-bottom: 1.8rem;
+            text-shadow: 0 2px 12px #0f2e3d;
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 18px 40px; /* Slightly larger button */
+            background: linear-gradient(135deg, #a7d9f7, #66a3d1); /* Serene blue gradient */
+            color: #0d1217; /* Dark text on light button */
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 8px 30px rgba(102, 163, 209, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(102, 163, 209, 0.6);
+            background: linear-gradient(135deg, #66a3d1, #a7d9f7); /* Reverse gradient on hover */
+        }
+
+        .book-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Lighter shine */
+            transform: skewX(-30deg);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .book-now-btn:hover::before {
+            left: 100%;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .content-section {
+            padding: 5rem 8%; /* More vertical padding */
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #f8f7df;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem; /* Larger section titles */
+            color: #968032; /* Golden accent */
+            margin-bottom: 3rem; /* More space below title */
+            text-shadow: 0 0 15px rgba(252,227,138,0.3);
+            font-weight: 700;
+        }
+
+        .feature-list, .tips-list {
+            text-align: left;
+            max-width: 800px;
+            margin: 2.5rem auto; /* More margin */
+            font-size: 1.1rem; /* Slightly larger text */
+            line-height: 1.9;
+        }
+
+        .feature-list li, .tips-list li {
+            margin-bottom: 1.2rem; /* More spacing between list items */
+            padding-left: 1.8rem; /* More padding for bullet point */
+            position: relative;
+        }
+
+        .feature-list li::before, .tips-list li::before {
+            content: '🕉️'; /* Spiritual bullet point */
+            position: absolute;
+            left: 0;
+            color: #fce38a; /* Golden bullet point */
+            font-size: 1.3em;
+        }
+
+        .highlight {
+            color: #fad75c; /* Golden highlight */
+            font-weight: 700;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-kedarnath {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger min-width */
+            gap: 2rem; /* More gap */
+            margin-top: 3rem;
+        }
+
+        .gallery-kedarnath .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 3px 10px rgba(252,227,138,0.2);
+        }
+
+        .gallery-kedarnath img {
+            width: 100%;
+            height: 280px; /* Slightly taller images */
+            object-fit: cover;
+            transition: transform 0.5s ease-out, filter 0.5s ease-out;
+            border-radius: 1.5rem;
+        }
+
+        .gallery-kedarnath .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.6); /* Deeper brightness change */
+        }
+
+        .gallery-kedarnath .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8)); /* Darker gradient */
+            color: #e3dddd;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .gallery-kedarnath .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        /* --- Animations --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .kedarnath-title { font-size: 3rem; letter-spacing: 2px; }
+            .kedarnath-subtitle { font-size: 1.5rem; }
+            .hero-description { font-size: 1.05rem; }
+            .book-now-btn { padding: 14px 30px; font-size: 1rem; margin-top: 2rem; }
+            h3 { font-size: 2rem; margin-bottom: 2rem; }
+            .content-section { padding: 3rem 5%; }
+            .feature-list, .tips-list { margin: 1.5rem auto; font-size: 1rem; }
+            .feature-list li, .tips-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; }
+            .feature-list li::before, .tips-list li::before { font-size: 1.1em; }
+            .gallery-kedarnath { grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+            .gallery-kedarnath img { height: 200px; }
+        }
+    </style>
+    <!-- No Font Awesome link needed as unicode emojis are used or this section is removed -->
+</head>
+<body>
+    <header id="main-header">
+        <a href="index.html" class="logo">Wanderlust</a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#destinations" class="active">Destinations</a></li>
+                <li><a href="index.html#contact">Plan Your Trip</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main style="margin-top: 0;">
+        <!-- KEDARNATH HERO SECTION -->
+        <section class="kedarnath-hero">
+            <div class="hero-background-kedarnath" data-speed="-0.1"></div>
+            <div class="kedarnath-hero-content" data-speed="0.2">
+                <h1 class="kedarnath-title">Kedarnath</h1>
+                <h2 class="kedarnath-subtitle">Abode of Lord Shiva | Himalayan Pilgrimage</h2>
+                <p class="hero-description">
+                    Nestled amidst the majestic Garhwal Himalayas, <span class="highlight">Kedarnath</span> is one of the holiest Hindu shrines, part of the Char Dham pilgrimage. A journey to this sacred abode is a spiritual odyssey, offering breathtaking vistas, serene spiritual ambiance, and a profound connection with nature.
+                </p>
+                <a href="#plan-your-trip" class="book-now-btn">Embark on Your Pilgrimage</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Sacred Sites & Attractions</h3>
+            <ul class="feature-list">
+                <li><strong>Kedarnath Temple:</strong> The ancient and revered Shiva temple, standing tall against the Himalayan backdrop.</li>
+                <li><strong>Bhairavnath Temple:</strong> Located near Kedarnath Temple, dedicated to Lord Bhairav, the protector deity.</li>
+                <li><strong>Gandhi Sarovar (Chorabari Tal):</strong> A tranquil lake where Mahatma Gandhi's ashes were immersed, also known for a mythological connection to Shiva.</li>
+                <li><strong>Vasuki Tal:</strong> A pristine high-altitude lake, offering mesmerizing views and a challenging trek from Kedarnath.</li>
+                <li><strong>Adi Shankaracharya Samadhi:</strong> The resting place of the great 8th-century philosopher and saint, revered for unifying Hinduism.</li>
+                <li><strong>Mandakini River:</strong> Witness the powerful and sacred Mandakini River, originating from Chorabari Glacier.</li>
+            </ul>
+        </section>
+
+        <!-- The "Pilgrimage & Experiences" section has been REMOVED here -->
+
+        <section class="content-section">
+            <h3>Kedarnath Photo Gallery</h3>
+            <div class="gallery-kedarnath">
+                <div class="gallery-item">
+                    <img src="https://www.bizarexpedition.com/blog/storage/app/public/images/EvTzyxVmS6JRVqlrZlDswlP0itjhcXXl28zVOjYO.jpg" alt="Kedarnath Temple with mountains">
+                    <div class="gallery-caption">The Revered Kedarnath Temple</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.shikhar.com/blog/wp-content/uploads/2023/02/Kedarnath-Trek.jpg" alt="Trek route to Kedarnath">
+                    <div class="gallery-caption">The Challenging Pilgrimage Path</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://img.freepik.com/free-photo/with-snow-top-covered-with-clouds_181624-8786.jpg?semt=ais_incoming&w=740&q=80" alt="Himalayan peaks near Kedarnath">
+                    <div class="gallery-caption">Majestic Himalayan Vistas</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="mandakini.jpg" alt="Mandakini River flowing through mountains">
+                    <div class="gallery-caption">The Holy Mandakini River</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.mountainkingdoms.com/u/blog/_648xAUTO_crop_center-center_70_none/meaning-of-prayer-flags-everest-from-gokyo-ri_600x400.jpg" alt="Prayer flags in mountains">
+                    <div class="gallery-caption">Spiritual Ambiance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.stockcake.com/public/a/b/1/ab15943c-a55e-414d-b736-88ba1e6aacf2_large/serene-mountain-lake-stockcake.jpg" alt="A high altitude lake">
+                    <div class="gallery-caption">Serene High-Altitude Lakes</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-your-trip" class="content-section">
+            <h3>Travel Tips for Kedarnath Pilgrimage</h3>
+            <ul class="tips-list">
+                <li>Best time to visit: <span class="highlight">May to June</span> (pre-monsoon) and <span class="highlight">September to October</span> (post-monsoon) for clear weather.</li>
+                <li>Acclimatize properly; ascend gradually to avoid altitude sickness.</li>
+                <li>Carry warm, waterproof clothing, sturdy trekking shoes, and essential medicines.</li>
+                <li>Pony, Palki (doli), and Helicopter services are available for those unable to trek.</li>
+                <li>Respect the sanctity of the shrine and surrounding environment.</li>
+                <li>Book accommodations and travel arrangements well in advance, especially during peak season.</li>
+            </ul>
+        </section>
+
+        <!-- Dynamic Contact Section -->
+        <section class="content-section contact-cta">
+            <h3 class="glow-text" style="color: #c2a129;">Ready for Your Spiritual Journey to Kedarnath?</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #0a6559;"><b>Our experts will craft the perfect Kedarnath pilgrimage itinerary tailored to your spiritual aspirations.</b></p>
+            <a href="index.html#contact" class="book-now-btn">Get a Custom Pilgrimage Quote</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Wanderlust. All rights reserved.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple parallax for the hero background
+        gsap.to(".hero-background-kedarnath", {
+            yPercent: -20, // Moves background up slower than scroll
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".kedarnath-hero",
+                start: "top top",
+                end: "bottom top", // Ends when hero leaves viewport
+                scrub: true
+            }
+        });
+
+        // Optional: Parallax for the hero content (moves down slightly slower)
+        gsap.to(".kedarnath-hero-content", {
+            y: 50, // Moves content down slightly
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".kedarnath-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Smooth scroll for internal anchors (like "Embark on Your Pilgrimage")
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // NO SPARKLE JAVASCRIPT FUNCTIONS HERE
+
+        window.addEventListener('load', () => {
+            // Header background change on scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) { // Reduced threshold
+                    header.style.background = 'rgba(0,0,0,0.8)';
+                } else {
+                    header.style.background = 'rgba(0,0,0,0.3)';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
